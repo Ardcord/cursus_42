@@ -6,7 +6,7 @@
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:43:26 by tvanbael          #+#    #+#             */
-/*   Updated: 2022/03/10 11:45:08 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/03/15 09:47:53 by tvanbael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ int	ft_strlen(char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	if (str)
+	{
+		while (str[i] != '\0')
+			i++;
+		return (i);
+	}
+	else
+		return (0);
 }
 
-int	ft_strlenreste(char *str)
+int	ft_strreste(char *str)
 {
 	int	i;
 	int	j;
@@ -32,7 +37,7 @@ int	ft_strlenreste(char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
 	i++;
 	j = 0;
@@ -62,13 +67,16 @@ char	*ft_save_in_line(char *line, char *tmp)
 	int	i;
 
 	i = 0;
-	if (tmp)
+	line = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
+	if (!line)
+		return (NULL);
+	while (tmp[i] != '\0')
 	{
-		while (tmp)
-		{
-			line[i] = tmp[i];
-			i++;
-		}
+		line[i] = tmp[i];
+		i++;
 	}
-	return(line);
+	line[i] = '\0';
+	free(tmp);
+	tmp = NULL;
+	return (line);
 }
