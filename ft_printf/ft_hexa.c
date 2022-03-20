@@ -6,34 +6,40 @@
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:43:26 by tvanbael          #+#    #+#             */
-/*   Updated: 2022/03/18 19:02:43 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/03/20 15:57:40 by tvanbael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_hexa(long long int list, char *base)
+int	ft_hexa_len(unsigned int nb, int i)
 {
-	int							i;
-	unsigned long long int		nb;
-	char						*str;
-
-	i = 1;
-	nb = list;
-	while (nb >= 15)
-	{
-		i++;
+	while ((nb >= 16) && i++)
 		(nb /= 16);
-	}
-	nb = list;
-	str = malloc(sizeof(char) * i + 1);
+	return (i);
+}
+
+int	ft_hexa(unsigned int list, char *base)
+{
+	int		i;
+	char	*str;
+
+	i = ft_hexa_len(list, 1);
+	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (0);
 	str[i] = '\0';
-	while (-1 <= --i && list >= 0)
+	if (list == 0)
 	{
-		str[i] = base[nb % 16];
-		nb /= 16;
+		free (str);
+		write(1, "0", 1);
+		return (1);
+	}
+	while (0 <= --i)
+	{
+		if (list > 0)
+			str[i] = base[list % 16];
+		list /= 16;
 	}
 	i = ft_strlen(str);
 	ft_putstr(str);

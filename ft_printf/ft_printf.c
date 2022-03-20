@@ -6,7 +6,7 @@
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:29:04 by tvanbael          #+#    #+#             */
-/*   Updated: 2022/03/18 18:46:00 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/03/20 15:57:41 by tvanbael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_parser(va_list list, char *str)
 	else if (*str == 's')
 		i = ft_put_char_str(list, 3);
 	else if (*str == 'p')
-		i = ft_ptr_hexa(va_arg(list, long int), j);
+		i = ft_ptr_hexa(va_arg(list, unsigned long int), j, "0123456789abcdef");
 	else if (*str == 'd')
 		i = ft_putnbr_base(list, 1);
 	else if (*str == 'i')
@@ -85,9 +85,9 @@ int	ft_parser(va_list list, char *str)
 	else if (*str == 'u')
 		i = ft_putnbr_base(list, 2);
 	else if (*str == 'x')
-		i = ft_hexa(va_arg(list, long long int), "0123456789abcdef");
+		i = ft_hexa(va_arg(list, unsigned int), "0123456789abcdef");
 	else if (*str == 'X')
-		i = ft_hexa(va_arg(list, long long int), "0123456789ABCDEF");
+		i = ft_hexa(va_arg(list, unsigned int), "0123456789ABCDEF");
 	else if (*str == '%')
 		i = ft_put_char_str(list, 1);
 	return (i);
@@ -117,18 +117,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(list);
 	return (k);
-}
-
-int	main(void)
-{
-//	int	i = -1;
-//	char	*t = "cest de leau";
-//	unsigned int	i = 4294967295;
-//	int	i = 2147483646;
-//	ft_printf("%u", i);
- //	ft_printf("---ft_printf = %p", i);
-	printf("------printf = %p", -1);
-//	ft_printf("%i", 424643631);
-//	ft_printf("3216543164313");
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:44:56 by tvanbael          #+#    #+#             */
-/*   Updated: 2022/03/18 19:00:08 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/03/20 15:55:56 by tvanbael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,12 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-typedef struct s_index
-{
-	int		i;
-	int		j;
-	char	*save;
-}			t_index;
-
-char	*get_next_line(int fd);
-int		ft_strchr(char *str, char c);
-int		ft_strlen(char *str);
-int		ft_strreste(char *str);
-char	*ft_save_in_line(char *line, char *tmp);
+int		ft_hexa(unsigned int list, char *base);
+char	*ft_itoa_unsignd(unsigned int n);
+char	*ft_itoa(int n);
+int		ft_printf(const char *str, ...);
+int		ft_ptr_hexa(unsigned long int list, int j, char *base);
+int		ft_putstr(char *str);
+int		ft_strlen(const char *str);
 
 #endif
