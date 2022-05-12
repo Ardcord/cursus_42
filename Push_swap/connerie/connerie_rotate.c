@@ -1,56 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 17:49:51 by efunes            #+#    #+#             */
-/*   Updated: 2022/05/05 14:21:42 by tvanbael         ###   ########.fr       */
+/*   Created: 2022/04/30 19:34:45 by efunes            #+#    #+#             */
+/*   Updated: 2022/05/05 14:24:25 by tvanbael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_swap_a(t_list **a)
+short	ft_rotate_a(t_list **a, t_list **b)
 {
 	t_list	*tmp;
 
+	(void) b;
 	if (!a || !(*a) || !((*a)->next))
-		return ;
+		return (0);
 	tmp = (*a)->next;
-	(*a)->next = (*a)->next->next;
-	tmp->next = *a;
+	(*a)->next = NULL;
+	(ft_lstlast(tmp))->next = *a;
+//	ft_lstadd_back(&tmp, *a);
 	*a = tmp;
-	write(1, "sa\n", 3);
+	return (6);
 }
 
-void	ft_swap_b(t_list **b)
+short	ft_rotate_b(t_list **a, t_list **b)
 {
 	t_list	*tmp;
 
+	(void) a;
 	if (!b || !(*b) || !((*b)->next))
-		return ;
+		return (0);
 	tmp = (*b)->next;
-	(*b)->next = (*b)->next->next;
-	tmp->next = *b;
+	(*b)->next = NULL;
+	(ft_lstlast(tmp))->next = *b;
+//	ft_lstadd_back(&tmp, b);
 	*b = tmp;
-	write(1, "sb\n", 3);
+	return (7);
 }
 
-void	ft_swap_ss(t_list **a, t_list **b)
+short	ft_rotate_r(t_list **a, t_list **b)
 {
 	t_list	*tmp;
 
 	if (!a || !(*a) || !((*a)->next) || !b || !(*b) || !((*b)->next))
-		return ;
+		return (0);
 	tmp = (*a)->next;
-	(*a)->next = (*a)->next->next;
-	tmp->next = *a;
+	(*a)->next = NULL;
+	(ft_lstlast(tmp))->next = *a;
+//	ft_lstadd_back(&tmp, *a);
 	*a = tmp;
 	tmp = (*b)->next;
-	(*b)->next = (*b)->next->next;
-	tmp->next = *b;
+	(*b)->next = NULL;
+	(ft_lstlast(tmp))->next = *b;
+//	ft_lstadd_back(&tmp, *b);
 	*b = tmp;
-	write(1, "ss\n", 3);
+	return (8);
 }

@@ -6,7 +6,7 @@
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 10:57:32 by efunes            #+#    #+#             */
-/*   Updated: 2022/05/01 17:56:24 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:09:27 by tvanbael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ int	ft_issort(t_list *a, t_list *b)
 		return (0);
 	while (a->next)
 	{
-		if ((int)(a->content) > (int)(a->next->content))
+		if (*(int *)(a->content) > *(int *)(a->next->content))
 			return (0);
 		a = a->next;
 	}
+	fprintf(stderr, "sort end\n");
 	return (1);
 }

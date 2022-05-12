@@ -6,7 +6,7 @@
 #    By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/30 13:52:58 by tvanbael          #+#    #+#              #
-#    Updated: 2022/05/01 20:38:10 by tvanbael         ###   ########.fr        #
+#    Updated: 2022/05/09 10:39:29 by tvanbael         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,23 @@ SRCS			=	srcs/push_swap.c \
 					srcs/parser_init.c \
 					srcs/is_sort.c \
 					srcs/lst_clear_error.c \
-					operations/push.c \
-					operations/swap.c \
-					operations/reverse_rotate.c \
-					operations/rotate.c \
+					srcs/algo.c \
+					srcs/connerie.c \
+					srcs/connerie_write_clear.c \
+					connerie/connerie_push.c \
+					connerie/connerie_swap.c \
+					connerie/connerie_rotate.c \
+					connerie/connerie_reverse_rotate.c \					
+#					operations/push.c \
+#					operations/swap.c \
+#					operations/rotate.c \
+#					operations/reverse_rotate.c \
+#					srcs/ft_sort_three.c \
+#					srcs/ft_sort_fourth.c \
 
 OBJS			=	$(SRCS:.c=.o)
 
-BONUS			=	checker/chercker.c \
+BONUS			=	checker/checker.c \
 					checker/ft_parse_op.c \
 
 BONUS_OBJS		=	$(BONUS:.c=.o)
@@ -33,6 +42,8 @@ RM				=	rm -f
 FLAGS			=	-Wall -Werror -Wextra -g
 
 NAME			=	push_swap
+
+BONUS_NAME		=	checker
 
 LIBFT			=	libft.a
 
@@ -65,8 +76,8 @@ fclean:		clean
 re:			fclean all
 				@echo '\033[0;32mMake-Re Complete!';
 
-bonus:		$(BONUS) $(BONUS_OBJS)
-				ar rcs 
+bonus:		$(BONUS_OBJS)
+			$(GCC) $(FLAGS) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
 				
 
 .PHONY:		all clean fclean re
