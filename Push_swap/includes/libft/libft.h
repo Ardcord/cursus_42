@@ -6,7 +6,7 @@
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:48:10 by tvanbael          #+#    #+#             */
-/*   Updated: 2022/05/01 10:30:21 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:34:14 by tvanbael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	*ft_memchr(const void *str, int c, size_t len);
 int		ft_memcmp(const void *s1, const void *s2, size_t len);
 char	*ft_strnstr(const char *str, const char *srch, size_t len);
 int		ft_atoi(const char *str);
+int		ft_atoi2(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -72,6 +73,7 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lst_penultimate(t_list *lst);
 /*t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));*/
 
 /*---------------------------------ft_printf-------------------------------*/

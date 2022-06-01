@@ -6,7 +6,7 @@
 #    By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 14:36:41 by tvanbael          #+#    #+#              #
-#    Updated: 2022/05/01 10:30:18 by tvanbael         ###   ########.fr        #
+#    Updated: 2022/05/31 11:23:31 by tvanbael         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS		= 	ft_isdigit.c \
 				ft_memcmp.c \
 				ft_strnstr.c \
 				ft_atoi.c \
+				ft_atoi2.c \
 				ft_calloc.c \
 				ft_strdup.c \
 				ft_substr.c \
@@ -63,7 +64,8 @@ SRCS		= 	ft_isdigit.c \
 				ft_lstdelone.c \
 				ft_lstclear.c \
 				ft_lstiter.c \
-				#ft_lstmap.c \
+				ft_lstmap.c \
+				ft_penultimate.c \
 
 OBJS		=	$(SRCS:.c=.o)
 
@@ -87,7 +89,7 @@ clean:
 			@$(RM) $(OBJS)
 
 fclean:		clean
-			@$(RM) $(NAME) a.out
+				@$(RM) $(NAME) a.out
 
 re:			fclean all
 

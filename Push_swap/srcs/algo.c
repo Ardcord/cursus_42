@@ -6,40 +6,40 @@
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 19:30:23 by tvanbael          #+#    #+#             */
-/*   Updated: 2022/05/09 10:38:42 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:31:50 by tvanbael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// static void	lowlst(t_list **a, t_list **b, int len)
-// {
-// 	t_list	*atmp;
-// 	t_list	*tmp;
+t_ope	*ft_force_a(t_ope *begin, t_stack *sort)
+{
+	t_sort	move;
 
-// 	atmp = *a;
-// 	tmp = atmp->next;
-// 	if (len == 2 && *((int *)(*a)->content) > *((int *)(*a)->next->content))
-// 		ft_swap_a(a);
-// 	if (len == 3)
-// 		ft_sort_three(a);
-// 	if (len == 4)
-// 		ft_sort_four(a, b);
-// 	if (len == 5)
-// 		ft_sort_five(a, b);
-// }
+	while (sort->a && sort->a->next && sort->a->next->next)
+	{
+		begin->pb = ft_new_op(&begin, 2);
+		begin = ft_retry_action(&sort->a, &sort->b, begin, 2);
+		begin = begin->pb;
+	}
+	while (sort->b)
+	{
+		move = ft_how_to_sort(sort);
+		begin = ft_quick_sort(begin, move, sort);
+	}
+	if (ft_issort(sort->a, sort->b))
+		return (ft_how_rotate(begin, sort));
+	return (begin);
+}
 
-void	ft_algo(t_list **stack_a, t_list **stack_b)
+t_ope	*ft_algo(t_ope *begin, t_stack *sort)
 {
 	int	len;
 
-	len = ft_lstsize(*stack_a);
-	if (ft_issort(*stack_a, *stack_b))
-		return ;
-//	if (1 < len && len < 6)
-//		lowlst(stack_a, stack_b, len);
-	ft_force(stack_a, stack_b);	
-//	else if (len > 5)
-//		ft_;
-	return ;
+	len = ft_lstsize(sort->a);
+	if (!ft_issort(sort->a, sort->b))
+		return (begin);
+	if (1 < len && len < 7)
+		return (ft_range(begin, sort, 0, 0));
+	return (ft_force_a(begin, sort));
 }

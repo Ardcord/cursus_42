@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   connerie_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 17:41:59 by efunes            #+#    #+#             */
-/*   Updated: 2022/05/05 14:21:55 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/05/22 11:52:10 by efunes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_push_a(t_list **a, t_list **b)
+short	ft_push_a(t_list **a, t_list **b)
 {
 	t_list	*tmp;
 
 	if (!b || !a || !(*b))
-		return ;
+		return (-1);
 	tmp = (*b)->next;
 	(*b)->next = *a;
-	a = b;
+	*a = *b;
 	*b = tmp;
-	write(1, "pa\n", 3);
+	return (1);
 }
 
-void	ft_push_b(t_list **a, t_list **b)
+short	ft_push_b(t_list **a, t_list **b)
 {
 	t_list	*tmp;
 
 	if (!a || !b || !(*a))
-		return ;
+		return (-1);
 	tmp = (*a)->next;
 	(*a)->next = *b;
-	b = a;
+	*b = *a;
 	*a = tmp;
-	write(1, "pb\n", 3);
+	return (2);
+}
+
+short	ft_all(t_list **a, t_list **b)
+{
+	(void) a;
+	(void) b;
+	return (0);
 }

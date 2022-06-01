@@ -6,7 +6,7 @@
 /*   By: tvanbael <tvanbael@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:44:40 by tvanbael          #+#    #+#             */
-/*   Updated: 2022/05/08 14:50:56 by tvanbael         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:37:27 by efunes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 void	ft_free_ope(t_ope **head)
 {
-	if ((*head)->pa)
+	if (*head && (*head)->pa)
 		ft_free_ope(&((*head)->pa));
-	if ((*head)->pb)
+	if (*head && (*head)->pb)
 		ft_free_ope(&((*head)->pb));
-	if ((*head)->sa)
+	if (*head && (*head)->sa)
 		ft_free_ope(&((*head)->sa));
-	if ((*head)->sb)
+	if (*head && (*head)->sb)
 		ft_free_ope(&((*head)->sb));
-	if ((*head)->ss)
+	if (*head && (*head)->ss)
 		ft_free_ope(&((*head)->ss));
-	if ((*head)->ra)
+	if (*head && (*head)->ra)
 		ft_free_ope(&((*head)->ra));
-	if ((*head)->rb)
+	if (*head && (*head)->rb)
 		ft_free_ope(&((*head)->rb));
-	if ((*head)->rr)
+	if (*head && (*head)->rr)
 		ft_free_ope(&((*head)->rr));
-	if ((*head)->rra)
+	if (*head && (*head)->rra)
 		ft_free_ope(&((*head)->rra));
-	if ((*head)->rrb)
+	if (*head && (*head)->rrb)
 		ft_free_ope(&((*head)->rrb));
-	if ((*head)->rrr)
+	if (*head && (*head)->rrr)
 		ft_free_ope(&((*head)->rrr));
 	if (*head)
 		free(*head);
-	head = NULL;
+	*head = NULL;
 }
 
 void	ft_print_ope(t_ope *head)
@@ -67,4 +67,21 @@ void	ft_print_ope(t_ope *head)
 		write(1, "rrb\n", 4);
 	if (head->ope == 11)
 		write(1, "rrr\n", 4);
+}
+
+t_ope	*ft_error(t_ope **a)
+{
+	write(2, "Error\n", 6);
+	ft_free_ope(a);
+	return (NULL);
+}
+
+void	lst_clear_error(t_list **stack_a)
+{
+	void	(*ftc)(void *);
+
+	ftc = &ft_void;
+	ft_lstclear(stack_a, ftc);
+	write(2, "Error\n", 6);
+	exit (0);
 }
